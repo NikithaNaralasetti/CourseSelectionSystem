@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .logo {
+            margin-top: 20px;
+            background-color: #6c5ce7;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo svg {
+            width: 75px;
+            height: 75px;
+            fill: white;
+        }
+
+        .sliderbar {
+            width: 250px;
+            background-color: #a29bfe;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #sidebar-item {
+            display: flex;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #6c5ce7;
+            width: 200px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #sidebar-item a {
+            text-decoration: none;
+            color: white;
+            padding-left: 10px;
+            font-size: 14px;
+        }
+
+        #sidebar-item.logout {
+            margin-top: 230px;
+            margin-bottom: 24px;
+            cursor: pointer;
+        }
+
+        #sidebar-item:hover {
+            background-color: #5d4ed6;
+        }
+
+        #sidebar-item i {
+            color: white;
+        }
+
+        .main .welcome-box {
+            width: 1200px;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            margin-left: 10px;
+            background-color: #a29bfe;
+            display: flex;
+        }
+
+        .welcome-box .welcome-message {
+            width: 1030px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sliderbar">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2L0 9L12 16L22 10.5V17.5H24V9L12 2ZM3.5 9L12 3.5L20.5 9L12 14.5L3.5 9ZM12 16.5L2 10.5V14.5L12 20.5L22 14.5V10.5L12 16.5Z" />
+                </svg>
+            </div>
+            <div id="sidebar-item"><i class="fa fa-dashboard"></i><a href="#" onclick="return false;" style="pointer-events: none;">Dashboard</a></div>
+            <div id="sidebar-item"><i class="fa fa-graduation-cap"></i><a href="addnewcourse.html">Add New Courses</a></div>
+            <div id="sidebar-item"><i class="fa fa-graduation-cap"></i><a href="removecourses.html">Remove Courses</a></div>
+            <div id="sidebar-item"><i class="fa fa-graduation-cap"></i><a href="courseupdate.html">Update Courses</a></div>
+            <div id="sidebar-item logout"><i class="fa fa-sign-out"></i><a href="login.html">Logout</a></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <div class="welcome-box">
+                <div class="welcome-message">
+                    <h1>Welcome!!! <span th:text="${name}"></span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

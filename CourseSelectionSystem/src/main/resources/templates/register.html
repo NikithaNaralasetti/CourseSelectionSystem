@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8686e2;
+            display: flex;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: #8686e2;
+        }
+
+        .left-section {
+            background-color: #0e0c3e;
+            padding: 40px;
+            color: white;
+            width: 50%;
+            height: 70%;
+            display: flex;
+            border-bottom-right-radius: 100%;
+        }
+
+        .left-section h1 {
+            font-size: 36px;
+            padding-top: 30%;
+        }
+
+        .right-section {
+            width: 60%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 300px;
+            
+        }
+
+        form input {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #C5C5C5;
+            color: #666;
+        }
+
+        form input::placeholder {
+            text-align: center;
+            color: rgb(95, 89, 89);
+            font-weight: 24px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        form .button {
+            /* margin-top: 20px; */
+            /* padding: 10px; */
+            background-color: #5C4DBF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        form .button:hover {
+            background-color: #3F3D9E;
+        }
+
+        .right-section p {
+            margin-top: 20px;
+        }
+
+        .signinbutt {
+            color: #5CC4D7;
+            border: 0px;
+            padding: 0%;
+            width: fit-content;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left-section">
+        <h1>Join with us</h1>
+    </div>
+    <div class="container">
+
+        <div class="right-section">
+            <form action="userdetails" method="post" id="registrationForm" enctype="multipart/form-data">
+                <input type="text" required="required" name="id" placeholder="ID number">
+                <input type="text" required="required" name="name" placeholder="Name">
+                <input type="text" required="required" name="emailid" placeholder="Email">
+                <input type="text" required="required" name="Password" placeholder="Password" id="password">
+                <input type="text" required="required" name="confirmpassword" placeholder="Confirm Password" id="confirmpassword">
+                <input type="text" required="required" name="type" placeholder="Student / Faculty">
+                <input type="file" required="required" name="profilepic" placeholder="Proflie Picture">
+                <input type="submit" value="Register" class="button" id="submitBtn">
+            </form>
+            <form action="/loginpage">
+                <p>Already have an account? <input type="submit" value="SIGN IN" class="signinbutt"> Here</p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Dashboard</title>
+    <style>
+        /* Reset and general styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f3fd; /* Light lavender background */
+            display: flex;
+            height: 100vh;
+            color: #4d4b63; /* Subtle dark gray for text */
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Sidebar styles */
+        .sliderbar {
+            width: 250px;
+            background-color: #d9d7f1; /* Soft lavender */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .logo svg {
+            width: 75px;
+            height: 75px;
+            fill: #6c63ff; /* Soft purple */
+        }
+
+        #sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #6c63ff; /* Soft purple */
+            width: 200px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        #sidebar-item:hover {
+            background-color: #5d4ed6; /* Slightly darker purple */
+        }
+
+        #sidebar-item i {
+            color: white;
+            margin-right: 10px;
+        }
+
+        #sidebar-item input {
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #sidebar-item.logout {
+            margin-top: auto;
+        }
+
+        /* Main content */
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .welcome-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #a29bfe; /* Soft lavender */
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .welcome-message h1 {
+            font-size: 24px;
+        }
+
+        .welcome-message p {
+            font-size: 18px;
+        }
+
+        .profileimg img {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+        }
+
+        /* Course grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: #fff; /* White background for cards */
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-card h3 {
+            font-size: 20px;
+            color: #6c63ff; /* Soft purple */
+            margin-bottom: 10px;
+        }
+
+        .course-card p {
+            font-size: 16px;
+            color: #4d4b63; /* Subtle dark gray */
+        }
+
+        .course-card .progress {
+            margin-top: 10px;
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .course-card .progress .progress-bar {
+            height: 100%;
+            background-color: #6c63ff; /* Soft purple */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sliderbar">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2L0 9L12 16L22 10.5V17.5H24V9L12 2ZM3.5 9L12 3.5L20.5 9L12 14.5L3.5 9ZM12 16.5L2 10.5V14.5L12 20.5L22 14.5V10.5L12 16.5Z" />
+                </svg>
+            </div>
+            <form id="sidebar-item"><i class="fa fa-dashboard"></i><input type="submit" value="Dashboard" disabled></form>
+            <form action="courses" method="post" id="sidebar-item"><i class="fa fa-graduation-cap"></i><input
+                    type="submit" value="Courses"></form>
+            <form action="courseregistration" method="post" id="sidebar-item"><i class="fa fa-list"></i><input
+                    type="submit" value="Course Registration"></form>
+            <form action="Timetable" method="get" id="sidebar-item"><i class="fa fa-calendar"></i><input type="submit"
+                    value="Timetable"></form>
+            <form action="profile" method="post" id="sidebar-item"><i class="fa fa-user-circle-o"></i><input
+                    type="submit" value="Profile"></form>
+            <form action="/logout" method="post" id="sidebar-item" class="logout"><i class="fa fa-sign-out"></i><input
+                    type="submit" value="Logout"></form>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <div class="welcome-box">
+                <div class="welcome-message">
+                    <h1>Welcome! <span th:text="${name}"></span></h1>
+                    <p>Enrollment ID: <span th:text="${id}"></span></p>
+                </div>
+                <div class="profileimg">
+                    <img alt="Profile Picture" th:src="@{|/image/${id}|}">
+                </div>
+            </div>
+
+            <!-- Course Grid -->
+            <div class="course-grid">
+                <a href="/java-full-stack" class="course-card">
+                    <h3>Java Full Stack Development</h3>
+                    <p>III Year</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 25%;"></div>
+                    </div>
+                </a>
+                <a href="/enterprise-programming" class="course-card">
+                    <h3>Enterprise Programming</h3>
+                    <p>III Year</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 50%;"></div>
+                    </div>
+                </a>
+                <a href="/introduction-to-blockchain" class="course-card">
+                    <h3>Introduction to Blockchain</h3>
+                    <p>III Year</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 10%;"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

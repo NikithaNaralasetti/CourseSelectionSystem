@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .timetable th, .timetable td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        /* Header styles */
+        .timetable th {
+            background-color: #6c5ce7;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Row background color for alternate rows */
+        .timetable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .timetable tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Styling for the time column */
+        .timetable td:first-child {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        /* Additional styles for a cleaner look */
+        .timetable td {
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Make the table responsive on smaller screens */
+        @media (max-width: 768px) {
+            .timetable {
+                font-size: 12px;
+            }
+
+            .timetable th, .timetable td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Weekly Timetable</h1>
+    <table class="timetable">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>Introduction to Programming</td>
+                <td>Data Structures</td>
+                <td>Discrete Mathematics</td>
+                <td>Software Engineering</td>
+                <td>Computer Networks</td>
+            </tr>
+            <tr>
+                <td>10:15 AM - 11:15 AM</td>
+                <td>Operating Systems</td>
+                <td>Algorithms</td>
+                <td>Database Management</td>
+                <td>Web Development</td>
+                <td>Artificial Intelligence</td>
+            </tr>
+            <tr>
+                <td>11:30 AM - 12:30 PM</td>
+                <td>Cryptography</td>
+                <td>Object-Oriented Programming</td>
+                <td>Computer Architecture</td>
+                <td>Parallel Computing</td>
+                <td>Machine Learning</td>
+            </tr>
+            <tr>
+                <td>1:30 PM - 2:30 PM</td>
+                <td>Computer Graphics</td>
+                <td>Distributed Systems</td>
+                <td>Mobile Development</td>
+                <td>Cybersecurity</td>
+                <td>Big Data Analytics</td>
+            </tr>
+            <tr>
+                <td>2:45 PM - 3:45 PM</td>
+                <td>Compiler Design</td>
+                <td>Image Processing</td>
+                <td>Natural Language Processing</td>
+                <td>Game Development</td>
+                <td>Internet of Things</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

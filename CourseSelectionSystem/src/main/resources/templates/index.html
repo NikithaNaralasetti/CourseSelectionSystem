@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(0, 0, 0); /* Changed background to grey */
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            color: white;
+            height: 100vh;
+        }
+
+        .content {
+            flex: 1;
+            max-width: 50%;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #e67e22;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .register {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .admin {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        .login {
+            background-color: #8e44ad;
+            color: white;
+        }
+
+        .image {
+            flex: 1;
+            max-width: 50%;
+            text-align: center;
+        }
+
+        .image img {
+            width: 90%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>For Every Student, Every Classroom</h1>
+            <p>
+                Learn new skills and explore popular courses. Dynamically supply transparent deliverables 
+                to foster collaboration and innovation. Start your journey today!
+            </p>
+            <div class="buttons">
+                <a href="register" class="btn register">Register</a>
+                <a href="admin" class="btn admin">Admin</a>
+                <a href="loginpage" class="btn login">Login</a> <!-- Update this href to point to the correct login URL -->
+            </div>
+        </div>
+        <div class="image">
+            <img src="../static/images/index-img.jpg" th:src="@{images/index-img.jpg}"  alt="Student" />
+        </div>
+    </div>
+</body>
+</html>

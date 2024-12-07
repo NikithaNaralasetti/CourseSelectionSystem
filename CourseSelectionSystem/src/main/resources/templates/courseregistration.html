@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Selection</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #6c5ce7;
+    }
+
+    form {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 800px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    thead {
+      background-color: #6c5ce7;
+      color: #ffffff;
+    }
+
+    th, td {
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+      background-color: #e6e6ff;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+
+    button {
+      background-color: #6c5ce7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #5d4ed6;
+    }
+
+    #successMessage {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Course Selection</h1>
+  <form id="courseSelectionForm"> 
+    <table>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Course Name</th>
+          <th>Course ID</th>
+          <th>Seats Available</th>
+          <th>Selection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Java Full Stack Development</td>
+          <td>CS101</td>
+          <td class="seats" data-total="50">50</td>
+          <td><input type="checkbox" name="courses[]" value="CS101"></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Enterprise Programming</td>
+          <td>CS102</td>
+          <td class="seats" data-total="40">40</td>
+          <td><input type="checkbox" name="courses[]" value="CS102"></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Introduction to Blockchain</td>
+          <td>CS103</td>
+          <td class="seats" data-total="30">30</td>
+          <td><input type="checkbox" name="courses[]" value="CS103"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit">Add Selected Courses</button>
+  </form>
+
+  <div id="successMessage" style="display: none;">
+    Courses added successfully!
+  </div>
+
+  <script>
+    // Attach event listeners to checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
+      checkbox.addEventListener('change', function () {
+        // Get the corresponding "Seats Available" cell
+        const row = checkbox.closest('tr');
+        const seatsCell = row.querySelector('.seats');
+        const totalSeats = parseInt(seatsCell.dataset.total);
+        let availableSeats = parseInt(seatsCell.textContent);
+
+        if (checkbox.checked) {
+          if (availableSeats > 0) {
+            seatsCell.textContent = availableSeats - 1;
+          } else {
+            alert('No seats available for this course!');
+            checkbox.checked = false;
+          }
+        } else {
+          seatsCell.textContent = availableSeats + 1;
+        }
+      });
+    });
+
+    // Form submission logic
+    document.getElementById('courseSelectionForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Get selected courses
+      const selectedCourses = document.querySelectorAll('input[name="courses[]"]:checked');
+      const courseIds = Array.from(selectedCourses).map(course => course.value);
+
+      // Simulate adding courses
+      console.log('Selected courses:', courseIds);
+
+      if (courseIds.length > 0) {
+        document.getElementById('successMessage').style.display = 'block';
+      } else {
+        alert('Please select at least one course.');
+      }
+    });
+  </script>
+</body>
+</html>

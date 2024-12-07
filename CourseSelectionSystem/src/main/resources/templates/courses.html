@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .logo {
+            margin-top: 20px;
+            background-color: #6c5ce7;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo svg {
+            width: 75px;
+            height: 75px;
+            fill: white;
+        }
+
+        .sliderbar {
+            width: 250px;
+            background-color: #a29bfe;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        #sidebar-item {
+            display: flex;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #6c5ce7;
+            width: 200px;
+            margin-top: 10px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #sidebar-item input {
+            border: none;
+            background-color: transparent;
+            margin-left: 10px;
+            color: white;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        #sidebar-item.logout {
+            margin-top: auto;
+            margin-bottom: 24px;
+        }
+
+        #sidebar-item:hover {
+            background-color: #5d4ed6;
+        }
+
+        #sidebar-item i {
+            color: white;
+        }
+
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table th,
+        table td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #6c5ce7;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        h5 {
+            margin-top: 20px;
+            color: #6c5ce7;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sliderbar">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2L0 9L12 16L22 10.5V17.5H24V9L12 2ZM3.5 9L12 3.5L20.5 9L12 14.5L3.5 9ZM12 16.5L2 10.5V14.5L12 20.5L22 14.5V10.5L12 16.5Z" />
+                </svg>
+            </div>
+            <form action="dashboard" method="post" id="sidebar-item">
+                <i class="fa fa-dashboard"></i><input type="submit" value="Dashboard">
+            </form>
+            <form action="" method="post" id="sidebar-item">
+                <i class="fa fa-graduation-cap"></i><input type="submit" value="Courses" disabled="disabled">
+            </form>
+            <form action="courseregistration" method="post" id="sidebar-item">
+                <i class="fa fa-list"></i><input type="submit" value="Course Registration">
+            </form>
+            <form action="" method="post" id="sidebar-item">
+                <i class="fa fa-calendar"></i><input type="submit" value="Timetable">
+            </form>
+            <form action="profile" method="post" id="sidebar-item">
+                <i class="fa fa-user-circle-o"></i><input type="submit" value="Profile">
+            </form>
+            <form action="login" id="sidebar-item" class="logout">
+                <i class="fa fa-sign-out"></i><input type="submit" value="Logout">
+            </form>
+        </div>
+        <div class="main">
+            <table>
+                <tr>
+                    <th>S.No</th>
+                    <th>Course Name</th>
+                    <th>Course ID</th>
+                </tr>
+                <tr th:each="courses :${listofcourses}">
+                    <td></td>
+                    <td th:text="${courses.coursename}"></td>
+                    <td th:text="${courses.courseid}"></td>
+                </tr>
+            </table>
+            <h5 th:text="${nodata}"></h5>
+        </div>
+    </div>
+</body>
+
+</html>
